@@ -1,4 +1,5 @@
-# Shell scripting notes<a name="TOP"></a> 
+# Shell scripting notes
+<a name="TOP"></a> 
 
 
 # Shell scripting notes from Datacamp #
@@ -159,10 +160,4 @@ but if it contains:
 then uniq will print all four lines. The reason is that uniq is built to work with very large files. In order to remove non-adjacent lines from a file, it would have to keep the whole file in memory (or at least, all the unique lines seen so far). By only removing adjacent duplicates, it only has to keep the most recent unique line in memory.
 
 
-<script>
-// Function to scroll to the top of the page when the "Go To Top" link is clicked
-function goToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-</script>
  [Go To TOP](goToTop) 
