@@ -160,4 +160,4 @@ but if it contains:
 then uniq will print all four lines. The reason is that uniq is built to work with very large files. In order to remove non-adjacent lines from a file, it would have to keep the whole file in memory (or at least, all the unique lines seen so far). By only removing adjacent duplicates, it only has to keep the most recent unique line in memory.
 
 
- [Go To TOP](goToTop) 
+ [Go To TOP](#TOP) 
