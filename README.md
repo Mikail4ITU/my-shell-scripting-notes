@@ -159,5 +159,27 @@ but if it contains:
 2017-08-03
 then uniq will print all four lines. The reason is that uniq is built to work with very large files. In order to remove non-adjacent lines from a file, it would have to keep the whole file in memory (or at least, all the unique lines seen so far). By only removing adjacent duplicates, it only has to keep the most recent unique line in memory.
 
+# How can I save commands to re-run later?
+You have been using the shell interactively so far. But since the commands you type in are just text, you can store them in files for the shell to run over and over again. To start exploring this powerful capability, put the following command in a file called headers.sh:
 
- [Go To TOP](#TOP) 
+`head -n 1 seasonal/*.csv`
+This command selects the first row from each of the CSV files in the seasonal directory. Once you have created this file, you can run it by typing:
+
+`bash headers.sh`
+This tells the shell (which is just a program called bash) to run the commands contained in the file headers.sh, which produces the same output as running the commands directly.
+
+# How can I pass filenames to scripts?
+A script that processes specific files is useful as a record of what you did, but one that allows you to process any files you want is more useful. To support this, you can use the special expression $@ (dollar sign immediately followed by at-sign) to mean "all of the command-line parameters given to the script".
+
+For example, if unique-lines.sh contains sort $@ | uniq, when you run:
+
+bash unique-lines.sh seasonal/summer.csv
+the shell replaces $@ with seasonal/summer.csv and processes one file. If you run this:
+
+bash unique-lines.sh seasonal/summer.csv seasonal/autumn.csv
+it processes two data files, and so on.
+
+As a reminder, to save what you have written in Nano, type Ctrl + O to write the file out, then Enter to confirm the filename, then Ctrl + X to exit the editor.
+
+
+
