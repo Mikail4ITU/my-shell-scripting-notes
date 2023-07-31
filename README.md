@@ -173,11 +173,33 @@ A script that processes specific files is useful as a record of what you did, bu
 
 For example, if unique-lines.sh contains sort $@ | uniq, when you run:
 
-bash unique-lines.sh seasonal/summer.csv
+`bash unique-lines.sh seasonal/summer.csv`
 the shell replaces $@ with seasonal/summer.csv and processes one file. If you run this:
 
-bash unique-lines.sh seasonal/summer.csv seasonal/autumn.csv
+`bash unique-lines.sh seasonal/summer.csv seasonal/autumn.csv`
 it processes two data files, and so on.
+
+As a reminder, to save what you have written in Nano, type Ctrl + O to write the file out, then Enter to confirm the filename, then Ctrl + X to exit the editor.
+
+# How can one shell script do many things?
+Our shells scripts so far have had a single command or pipe, but a script can contain many lines of commands. For example, you can create one that tells you how many records are in the shortest and longest of your data files, i.e., the range of your datasets' lengths.
+
+Note that in Nano, "copy and paste" is achieved by navigating to the line you want to copy, pressing CTRL + K to cut the line, then CTRL + U twice to paste two copies of it.
+
+As a reminder, to save what you have written in Nano, type Ctrl + O to write the file out, then Enter to confirm the filename, then Ctrl + X to exit the editor.
+
+How can I write loops in a shell script?
+Shell scripts can also contain loops. You can write them using semi-colons, or split them across lines without semi-colons to make them more readable:
+
+# Print the first and last data records of each file.
+`for filename in $@`
+`do`
+    `head -n 2 $filename | tail -n 1`
+    `tail -n 1 $filename`
+`done`
+(You don't have to indent the commands inside the loop, but doing so makes things clearer.)
+
+The first line of this script is a comment to tell readers what the script does. Comments start with the # character and run to the end of the line. Your future self will thank you for adding brief explanations like the one shown here to every script you write.
 
 As a reminder, to save what you have written in Nano, type Ctrl + O to write the file out, then Enter to confirm the filename, then Ctrl + X to exit the editor.
 
